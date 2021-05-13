@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post; # Eloquentを使用するコード
+use Illuminate\Support\Facades\Auth;
+use App\Models\User; # Eloquentを使用するコード
+use App\Models\Book; # Eloquentを使用するコード
 use Validator; # Validatorを使用するコード
 
 class BooksController extends Controller
@@ -36,7 +38,12 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $book = new Book;
+        $book->title = $request->title;
+        $book->contents = $request->contents;
+        $book->user_id = auth()->id();
+        $book->save();
+        return redirect('/');
     }
 
     /**

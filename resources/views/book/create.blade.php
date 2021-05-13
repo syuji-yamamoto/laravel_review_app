@@ -7,7 +7,7 @@
             レビュー投稿の新規作成
         </h1>
  
-        <form method="POST" action="/store">
+        <form method="POST" action="{{ route('book.store') }}">
             @csrf
             <fieldset class="mb-4">
                 <div class="form-group">
