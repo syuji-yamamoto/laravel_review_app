@@ -13,12 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('book.index');
-});
-
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\BooksController::class, 'index']);
 Route::resource('book', 'App\Http\Controllers\BooksController', array('only' => array('index', 'create', 'store')));
 // Route::get('/index', [App\Http\Controllers\BooksController::class, 'index'])->name('book.index');
 // Route::get('/create', [App\Http\Controllers\BooksController::class, 'create'])->name('book.create');
