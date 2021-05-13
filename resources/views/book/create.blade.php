@@ -3,9 +3,7 @@
 @section('content')
 <div class="container mt-4">
     <div class="border p-4">
-        <h1 class="h4 mb-4 font-weight-bold">
-            レビュー投稿の新規作成
-        </h1>
+        <h1 class="mb-4 font-weight-bold">レビューの新規作成</h1>
  
         <form method="POST" action="{{ route('book.store') }}">
             @csrf
