@@ -19,5 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/index', [App\Http\Controllers\BooksController::class, 'index'])->name('book.index');
-Route::get('/create', [App\Http\Controllers\BooksController::class, 'create'])->name('book.create');
+// Route::get('/index', [App\Http\Controllers\BooksController::class, 'index'])->name('book.index');
+// Route::get('/create', [App\Http\Controllers\BooksController::class, 'create'])->name('book.create');
+// Route::post('/store', [App\Http\Controllers\BooksController::class, 'store'])->name('book.store');
+Route::resource('book', 'App\Http\Controllers\BooksController', array('only' => array('index', 'create', 'store')));
