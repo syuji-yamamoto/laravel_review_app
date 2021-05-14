@@ -17,8 +17,8 @@
       <tbody>
       @foreach ($books as $book)
         <tr>
-          <td>{{ $book->user->nickname }}</td>
-          <td>{{ $book->title }}</td>
+          <td style="min-width: 10em;">{{ $book->user->nickname }}</td>
+          <td style="min-width: 10em;">{{ $book->title }}</td>
           <td>{{ $book->contents }}</td>
           <td><a class="btn btn-primary" href="{{ route('book.show', $book->id) }}">詳細</a></td>
         </tr>

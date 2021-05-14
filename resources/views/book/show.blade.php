@@ -16,8 +16,8 @@
       </thead>
       <tbody>
         <tr>
-          <td>{{ $book->user->nickname }}</td>
-          <td>{{ $book->title }}</td>
+          <td style="min-width: 10em;">{{ $book->user->nickname }}</td>
+          <td style="min-width: 10em;">{{ $book->title }}</td>
           <td>{{ $book->contents }}</td>
           @if(Auth::user()->id === $book->user_id)
           <td><a class="btn btn-primary" href="{{ route('book.edit', $book->id) }}">編集</a></td>
