@@ -55,8 +55,15 @@ class BooksController extends Controller
      */
     public function show($id)
     {
-        $book = Book::find($id);
-        return view('book.show', ['book' => $book]);
+        if (Auth::check()) {
+            // ログイン済みのときの処理
+            $book = Book::find($id);
+            return view('book.show', ['book' => $book]);
+          } else {
+          // ログインしていないときの処理
+            return redirect('/login');
+          }
+
     }
 
     /**
@@ -67,8 +74,8 @@ class BooksController extends Controller
      */
     public function edit($id)
     {
-        $book = Book::find($id);
         if (\Auth::user()->id === $book->user_id) {
+            $book = Book::find($id);
             return view('book.edit', ['book' => $book]);
         }else{
             return redirect()->back();
