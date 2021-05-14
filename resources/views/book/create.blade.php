@@ -37,7 +37,8 @@
                         投稿する
                     </button>
                 </div>
-
-
-
+            </fieldset>
+        </form>
+    </div>
+</div>
 @endsection
