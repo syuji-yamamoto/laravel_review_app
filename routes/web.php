@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/', [App\Http\Controllers\BooksController::class, 'index']);
-Route::resource('book', 'App\Http\Controllers\BooksController', array('only' => array('index', 'create', 'store', 'show', 'edit', 'update')));
+Route::resource('book', 'App\Http\Controllers\BooksController');
 // Route::get('/index', [App\Http\Controllers\BooksController::class, 'index'])->name('book.index');
 // Route::get('/create', [App\Http\Controllers\BooksController::class, 'create'])->name('book.create');
 // Route::post('/store', [App\Http\Controllers\BooksController::class, 'store'])->name('book.store');
