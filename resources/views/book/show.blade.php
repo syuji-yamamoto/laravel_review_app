@@ -19,7 +19,7 @@
           <td>{{ $book->user->nickname }}</td>
           <td>{{ $book->title }}</td>
           <td>{{ $book->contents }}</td>
-          <td><a class="btn btn-primary" href="#">編集</a></td>
+          <td><a class="btn btn-primary" href="{{ route('book.edit', $book->id) }}">編集</a></td>
           <td><a class="btn btn-primary" href="#">削除</a></td>
         </tr>
       </tbody>
