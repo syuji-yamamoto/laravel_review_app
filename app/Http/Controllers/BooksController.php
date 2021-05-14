@@ -80,7 +80,12 @@ class BooksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = [
+            'title' => $request->title,
+            'contents' => $request->contents
+        ];
+        Book::find($id)->update($update);
+        return redirect('/');
     }
 
     /**
