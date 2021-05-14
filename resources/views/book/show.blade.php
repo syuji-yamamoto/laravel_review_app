@@ -20,7 +20,13 @@
           <td>{{ $book->title }}</td>
           <td>{{ $book->contents }}</td>
           <td><a class="btn btn-primary" href="{{ route('book.edit', $book->id) }}">編集</a></td>
-          <td><a class="btn btn-primary" href="#">削除</a></td>
+          <td>
+            <form method = "POST" href="{{ route('book.destroy', $book->id) }}" >
+            @csrf
+            @method('DELETE')
+            <input type = "submit" class="btn btn-primary" name = "" value = "削除">
+            </form>
+          </td>
         </tr>
       </tbody>
     </table>
