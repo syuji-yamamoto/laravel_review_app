@@ -16,7 +16,7 @@
       <tbody>
       @foreach ($books as $book)
         <tr>
-          <td>{{ $book->id }}</td>
+          <td>{{ $book->user->nickname }}</td>
           <td>{{ $book->title }}</td>
           <td>{{ $book->contents }}</td>
         </tr>

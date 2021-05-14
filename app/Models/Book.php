@@ -10,8 +10,8 @@ class Book extends Model
     protected $table = 'books';
     protected $guarded = array('id'); # 予期せぬ代入を防ぐためのコード
 
-    public function users()
+    public function user()
     {
-        return $this->belongsTo(User::Class);
+        return $this->belongsTo('App\Models\User');
     }
 }
