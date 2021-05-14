@@ -19,6 +19,7 @@
           <td>{{ $book->user->nickname }}</td>
           <td>{{ $book->title }}</td>
           <td>{{ $book->contents }}</td>
+          @if(Auth::user()->id === $book->user_id)
           <td><a class="btn btn-primary" href="{{ route('book.edit', $book->id) }}">編集</a></td>
           <td>
             <form method = "POST" href="{{ route('book.destroy', $book->id) }}" >
@@ -26,6 +27,7 @@
             @method('DELETE')
             <input type = "submit" class="btn btn-primary" name = "" value = "削除">
             </form>
+          @endif
           </td>
         </tr>
       </tbody>
