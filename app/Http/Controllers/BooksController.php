@@ -68,7 +68,11 @@ class BooksController extends Controller
     public function edit($id)
     {
         $book = Book::find($id);
-        return view('book.edit',  ['book' => $book]);
+        if (\Auth::user()->id === $book->user_id) {
+            return view('book.edit', ['book' => $book]);
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**
@@ -96,7 +100,11 @@ class BooksController extends Controller
      */
     public function destroy($id)
     {
-        $book = Book::find($id)->delete();
-        return redirect('/');
+        if (\Auth::user()->id === $book->user_id) {
+            $book = Book::find($id)->delete();
+            return redirect('/');
+        }else{
+            return redirect()->back();
+        }
     }
 }
