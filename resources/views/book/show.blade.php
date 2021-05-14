@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-4">
   <div class="border p-4">
-    <h1 class="mb-4 font-weight-bold">投稿詳細ページ</h1>
+    <h1 class="font-weight-bold">投稿詳細ページ</h1>
     <table class="table">
       <thead>
         <tr>
