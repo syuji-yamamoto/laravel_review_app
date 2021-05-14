@@ -15,7 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/', [App\Http\Controllers\BooksController::class, 'index']);
-Route::resource('book', 'App\Http\Controllers\BooksController');
+Route::group(['middleware' => ['auth']], function(){
+  Route::resource('book' , 'App\Http\Controllers\BooksController' ,['excpet' => ['index', 'show']] ); 
+});
+Route::resource('book', 'App\Http\Controllers\BooksController', ['only' => ['index', 'show']]);
+
 // Route::get('/index', [App\Http\Controllers\BooksController::class, 'index'])->name('book.index');
 // Route::get('/create', [App\Http\Controllers\BooksController::class, 'create'])->name('book.create');
 // Route::post('/store', [App\Http\Controllers\BooksController::class, 'store'])->name('book.store');
