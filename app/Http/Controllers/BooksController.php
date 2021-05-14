@@ -55,15 +55,8 @@ class BooksController extends Controller
      */
     public function show($id)
     {
-        if (Auth::check()) {
-            // ログイン済みのときの処理
-            $book = Book::find($id);
-            return view('book.show', ['book' => $book]);
-          } else {
-          // ログインしていないときの処理
-            return redirect('/login');
-          }
-
+        $book = Book::find($id);
+        return view('book.show', ['book' => $book]);
     }
 
     /**
