@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User; # Eloquentを使用するコード
 use App\Models\Book; # Eloquentを使用するコード
+use App\Http\Requests\BookRequest;
 use Validator; # Validatorを使用するコード
 
 class BooksController extends Controller
@@ -37,14 +38,15 @@ class BooksController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BookRequest $request)
     {
+        $validated = $request->validated();
         $book = new Book;
         $book->title = $request->title;
         $book->contents = $request->contents;
         $book->user_id = auth()->id();
         $book->save();
-        return redirect('/');
+        return redirect('/')->with($validated);
     }
 
     /**
