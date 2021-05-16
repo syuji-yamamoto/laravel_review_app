@@ -4,7 +4,10 @@
 <div class="container mt-4">
   <div class="border p-4">
     <h1 class="font-weight-bold">投稿一覧ページ</h1>
-    <a class="btn btn-primary" href="{{ url('/book/create') }}">投稿ページへ</a>
+    @if (Auth::check()){
+      <a class="btn btn-link" href="#">{{ $user->nickname }}</a>
+      <a class="btn btn-primary" href="{{ url('/book/create') }}">投稿ページへ</a>
+    @endif
     <table class="table">
       <thead>
         <tr>

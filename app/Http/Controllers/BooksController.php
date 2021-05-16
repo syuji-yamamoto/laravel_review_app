@@ -18,8 +18,9 @@ class BooksController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
         $books = Book::orderBy('id', 'desc')->get();
-        return view('book.index', ['books' => $books]);
+        return view('book.index', ['books' => $books, 'user' => $user]);
     }
 
     /**
