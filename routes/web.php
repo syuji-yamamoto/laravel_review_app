@@ -13,14 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Auth::routes();
+Route::get('/', [App\Http\Controllers\BooksController::class, 'index']);
+Route::group(['middleware' => ['auth']], function(){
+  Route::resource('book' , 'App\Http\Controllers\BooksController' ,['excpet' => ['index']] ); 
 });
+Route::resource('book', 'App\Http\Controllers\BooksController', ['only' => ['index']]);
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/index', [App\Http\Controllers\BooksController::class, 'index'])->name('book.index');
+// Route::get('/create', [App\Http\Controllers\BooksController::class, 'create'])->name('book.create');
+// Route::post('/store', [App\Http\Controllers\BooksController::class, 'store'])->name('book.store');
+// Route::get('/show/{id}', [App\Http\Controllers\BooksController::class, 'show'])->name('book.show');
