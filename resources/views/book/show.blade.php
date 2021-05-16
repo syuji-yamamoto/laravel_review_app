@@ -32,6 +32,8 @@
         </tr>
       </tbody>
     </table>
+    <p>【イメージ画像】</p>
+    <img src="{{ Storage::url($book->image) }}" alt="image" width="150px" height="100px">
   </div>
 </div>
 @endsection
