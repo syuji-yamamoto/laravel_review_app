@@ -32,6 +32,13 @@
         </tr>
       </tbody>
     </table>
+    @if ($book->image === "")
+      <p>【イメージ画像】</p>
+      画像はありません。
+    @else
+      <p>【イメージ画像】</p>
+      <img src="{{ Storage::url($book->image) }}" alt="image" width="150px" height="100px">
+    @endif
   </div>
 </div>
 @endsection

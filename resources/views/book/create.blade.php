@@ -5,12 +5,12 @@
     <div class="border p-4">
         <h1 class="mb-4 font-weight-bold">レビューの新規作成</h1>
  
-        <form method="POST" action="{{ route('book.store') }}">
+        <form method="POST" action="{{ route('book.store') }}" enctype="multipart/form-data">
             @csrf
             <fieldset class="mb-4">
                 <div class="form-group">
                     <label for="title">本のタイトル</label>
-                    <input id="name" name="title" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" value="{{ old('title') }}" type="text">
+                    <input id="title" name="title" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" value="{{ old('title') }}" type="text">
                     @if ($errors->has('title'))
                         <div class="invalid-feedback">
                             {{ $errors->first('title') }}
@@ -27,6 +27,7 @@
                         </div>
                     @endif
                 </div>
+                <input type="file" name="image">  
 
                 <div class="mt-5">
                     <a class="btn btn-secondary" href="/">
