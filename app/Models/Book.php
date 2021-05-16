@@ -11,6 +11,7 @@ class Book extends Model
     
     protected $table = 'books';
     protected $guarded = array('id'); # 予期せぬ代入を防ぐためのコード
+    protected $fillable = [ "name","content","image" ];
 
     public function user()
     {
