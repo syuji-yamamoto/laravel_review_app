@@ -10,7 +10,7 @@
             <fieldset class="mb-4">
                 <div class="form-group">
                     <label for="title">本のタイトル</label>
-                    <input id="name" name="title" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('title') }}" type="text">
+                    <input id="name" name="title" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" value="{{ old('title') }}" type="text">
                     @if ($errors->has('title'))
                         <div class="invalid-feedback">
                             {{ $errors->first('title') }}
