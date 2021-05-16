@@ -47,7 +47,7 @@ class BooksController extends Controller
             //ここでstore()メソッドを使っているが、これは画像データをstorageに保存している
             $image_path = $image->store('public/uploads'); //storage/app/public/uploadsに保存される
         } else {
-            $image = "";
+            $image_path = "";
         }
         $book = new Book;
         $book->title = $request->title;
