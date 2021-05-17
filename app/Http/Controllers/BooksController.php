@@ -20,7 +20,7 @@ class BooksController extends Controller
     {
         $user = Auth::user();
         $books = Book::orderBy('id', 'desc')->get();
-        return view('book.index', ['books' => $books, 'user' => $user]);
+        return view('books.index', ['books' => $books, 'user' => $user]);
     }
 
     /**
@@ -30,7 +30,7 @@ class BooksController extends Controller
      */
     public function create()
     {
-        return view('book.create');
+        return view('books.create');
     }
 
     /**
@@ -101,7 +101,7 @@ class BooksController extends Controller
     public function show($id)
     {
         $book = Book::find($id);
-        return view('book.show', ['book' => $book]);
+        return view('books.show', ['book' => $book]);
     }
 
     /**
@@ -114,7 +114,7 @@ class BooksController extends Controller
     {
         $book = Book::find($id);
         if (\Auth::user()->id === $book->user_id) {
-            return view('book.edit', ['book' => $book]);
+            return view('books.edit', ['book' => $book]);
         }else{
             return redirect()->back();
         }
