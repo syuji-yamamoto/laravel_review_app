@@ -5,7 +5,7 @@
     <div class="border p-4">
         <h1 class="font-weight-bold">レビューの編集</h1>
  
-        <form method="POST" action="{{ route('book.update', $book->id) }}">
+        <form method="POST" action="{{ route('book.update', $book->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <fieldset class="mb-4">
@@ -28,6 +28,8 @@
                         </div>
                     @endif
                 </div>
+
+                <input type="file" name="image"> 
 
                 <div class="mt-5">
                     <a class="btn btn-secondary" href="/">
