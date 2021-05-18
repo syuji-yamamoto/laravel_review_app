@@ -129,9 +129,20 @@ class BooksController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request->title);
+        $image = $request->image;
+        if ($image) {
+            //一意のファイル名を自動生成しつつ保存し、かつファイルパス（$productImagePath）を生成
+            //ここでstore()メソッドを使っているが、これは画像データをstorageに保存している
+            $image_path = $image->store('public/uploads'); //storage/app/public/uploadsに保存される
+        } else {
+            $image_path = "";
+        }
+        
         $update = [
             'title' => $request->title,
-            'contents' => $request->contents
+            'contents' => $request->contents,
+            'image' => $image_path
         ];
         Book::find($id)->update($update);
         return redirect('/');
