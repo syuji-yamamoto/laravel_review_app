@@ -25,7 +25,7 @@
             <form method = "POST" href="{{ route('book.destroy', $book->id) }}" >
             @csrf
             @method('DELETE')
-            <input type = "submit" class="btn btn-primary" name = "" value = "削除">
+              <input type = "submit" class="btn btn-primary" name = "" value = "削除">
             </form>
           @endif
           </td>
