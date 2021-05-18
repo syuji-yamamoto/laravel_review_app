@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/', [App\Http\Controllers\BooksController::class, 'index']);
+Route::get('/show', [App\Http\Controllers\UsersController::class, 'show']);
 Route::group(['middleware' => ['auth']], function(){
   Route::resource('book' , 'App\Http\Controllers\BooksController' ,['excpet' => ['index']] ); 
 });
