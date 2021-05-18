@@ -18,6 +18,24 @@
         </tr>
       </tbody>
     </table>
+    <h4 class="font-weight-bold">{{ $user->nickname }}さんの投稿一覧</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">タイトル</th>
+          <th scope="col">レビュー</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+      @foreach ($books as $book)
+        <tr>
+          <td style="min-width: 10em;">{{ $book->title }}</td>
+          <td>{{ $book->contents }}</td>
+      @endforeach
+      </tbody>
+    </table>
+
     <a class="btn btn-primary" href="{{ url('/') }}">トップページへ</a>
   </div>
 </div>
