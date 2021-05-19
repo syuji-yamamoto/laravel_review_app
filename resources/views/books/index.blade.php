@@ -4,11 +4,17 @@
 
 @section('content')
 <div class="container mt-4">
+  <form class="form-inline">
+    <div class="form-group">
+    <input type="search" class="form-control mr-sm-2" name="search"  value="{{request('search')}}" placeholder="キーワードを入力" aria-label="検索...">
+    </div>
+    <input type="submit" value="検索" class="btn btn-info">
+  </form>
   <div class="border p-4">
     <h1 class="font-weight-bold">投稿一覧ページ</h1>
     @if (Auth::check())
       <a class="btn btn-link" href="{{ url('/show') }}">{{ $user->nickname }}</a>
-      <a class="btn btn-primary" href="{{ url('/book/create') }}">投稿ページへ</a>
+      <a class="btn btn-primary" href="{{ url('/book/create') }}" style="margin-bottom: 5px;">投稿ページへ</a>
     @endif
     <table class="table">
       <thead>
@@ -31,5 +37,9 @@
       </tbody>
     </table>
   </div>
+</div>
+
+<div class="d-flex justify-content-center ">
+  {{ $books->links() }}
 </div>
 @endsection

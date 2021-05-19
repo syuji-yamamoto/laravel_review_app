@@ -19,7 +19,12 @@ class BooksController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $books = Book::orderBy('id', 'desc')->get();
+        $books = Book::orderBy('id', 'desc')->where(function ($query) {
+            // 検索機能
+            if ($search = request('search')) {
+                $query->where('title', 'LIKE', "%{$search}%")->orWhere('contents', 'LIKE', "%{$search}%");
+            }
+        })->paginate(3);
         return view('books.index', ['books' => $books, 'user' => $user]);
     }
 
