@@ -36,7 +36,7 @@
       </tbody>
     </table>
 
-    <a class="btn btn-primary" href="{{ url('/') }}">トップページへ</a>
+    <a class="btn btn-primary" href="{{ url('/') }}">投稿一覧ページへ戻る</a>
   </div>
 </div>
 @endsection
