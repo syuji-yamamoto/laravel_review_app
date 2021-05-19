@@ -24,7 +24,7 @@ class BooksController extends Controller
             if ($search = request('search')) {
                 $query->where('title', 'LIKE', "%{$search}%")->orWhere('contents', 'LIKE', "%{$search}%");
             }
-        })->paginate(3);
+        })->paginate(10);
         return view('books.index', ['books' => $books, 'user' => $user]);
     }
 
