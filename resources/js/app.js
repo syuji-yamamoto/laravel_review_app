@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap');
+require('./comment.js');
 
 window.Vue = require('vue').default;
 
