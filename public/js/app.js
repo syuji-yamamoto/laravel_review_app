@@ -1958,7 +1958,37 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   \*********************************/
 /***/ (() => {
 
-console.log("HelloWorld");
+$("#new_comment").on('submit', function (e) {
+  e.preventDefault();
+  var comment = $("#comment").val();
+  var nickName = $('#user-id').attr('name');
+  var bookId = $("#book-id").val();
+  $.ajaxSetup({
+    headers: {
+      "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+    }
+  });
+  $.ajax({
+    //POST通信
+    type: "post",
+    //ここでデータの送信先URLを指定します。
+    url: "/ajaxcomment",
+    dataType: "json",
+    data: {
+      nickname: nickName,
+      book_id: bookId,
+      comment: comment
+    }
+  }) //通信が成功したとき
+  .done(function (result) {
+    console.log(result);
+    html = "\n            <div class=\"border-top\">\n              <p>\n                \u6295\u7A3F\u8005\uFF1A".concat(result.nickname, "<br>\n                \u30B3\u30E1\u30F3\u30C8\uFF1A").concat(result.comment, "\n              </p>\n            </div>\n           ");
+    $("#ajax_comment").append(html);
+  }) //通信が失敗したとき
+  .fail(function (error) {
+    console.log(error.statusText);
+  });
+});
 
 /***/ }),
 
