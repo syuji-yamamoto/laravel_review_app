@@ -42,10 +42,11 @@
   </div>
   
   <div class="border p-4" style="margin-top: 10px;">
+  <div id="user-id" name="{{ $user->nickname }}"></div>
     @if (Auth::check())
-      <form class="mb-4" method="POST" action="{{ route('comment.store') }}">
+      <form class="mb-4" method="POST" action="{{ route('comment.store') }}" id = "new_comment">
         @csrf
-        <input name="book_id" type="hidden" value="{{ $book->id }}">
+        <input name="book_id" type="hidden" value="{{ $book->id }}" id = "book-id">
         <fieldset class="mb-4">
           <div class="form-group">
             <label for="comment" style="margin-top: 10px;">コメント入力</label>
@@ -72,6 +73,8 @@
     @endif
 
     <h5 class="font-weight-bold">コメント一覧</h5>
+    <!-- ここにajaxで取得したコメントデータを表示 -->
+    <div id = "ajax_comment"></div>
     @forelse ($book->comment as $comment)
       <div class="border-top">
         <p>
