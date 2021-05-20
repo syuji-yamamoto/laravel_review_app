@@ -105,8 +105,9 @@ class BooksController extends Controller
      */
     public function show($id)
     {
+        $user = Auth::user();
         $book = Book::find($id);
-        return view('books.show', ['book' => $book]);
+        return view('books.show', ['book' => $book, 'user' => $user]);
     }
 
     /**
