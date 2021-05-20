@@ -21,6 +21,7 @@ Route::group(['middleware' => ['auth']], function(){
 });
 Route::resource('book', 'App\Http\Controllers\BooksController', ['only' => ['index','show']]);
 Route::resource('comment', 'App\Http\Controllers\CommentsController', ['only' => ['store']]);
+Route::post('/ajaxcomment', [App\Http\Controllers\CommentsController::class, 'ajaxComment']);
 // Route::get('/index', [App\Http\Controllers\BooksController::class, 'index'])->name('book.index');
 // Route::get('/create', [App\Http\Controllers\BooksController::class, 'create'])->name('book.create');
 // Route::post('/store', [App\Http\Controllers\BooksController::class, 'store'])->name('book.store');
