@@ -25,7 +25,7 @@ class BookFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'title' => $this->faker->word(),
+            'title' => $this->faker->sentence(4,8),
             'contents' => $this->faker->realText(50),
         ];
     }
