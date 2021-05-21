@@ -105,8 +105,9 @@ class BooksController extends Controller
      */
     public function show($id)
     {
+        $user = Auth::user();
         $book = Book::find($id);
-        return view('books.show', ['book' => $book]);
+        return view('books.show', ['book' => $book, 'user' => $user]);
     }
 
     /**
@@ -163,6 +164,10 @@ class BooksController extends Controller
     {  
         $book = Book::find($id);
         if (\Auth::user()->id === $book->user_id) {
+            // 先にbooksテーブルに紐づいているcommentsテーブルのデータを削除
+            $book->comment()->each(function($comment){
+                $comment->delete();
+            });
             $book->delete();
             return redirect('/');
         }else{

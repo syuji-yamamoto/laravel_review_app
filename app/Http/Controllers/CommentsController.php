@@ -27,4 +27,16 @@ class CommentsController extends Controller
 
         return redirect()->route('book.show', [$savedata['book_id']]);
     }
+
+    public function ajaxComment(Request $request)
+    {
+        $comment = new Comment;
+        $comment->user_id = auth()->id();
+        $comment->book_id = $request->book_id;
+        $comment->comment = $request->comment;
+        $comment->save();
+
+        $result = $request->all();
+        return $result;
+    }
 }
