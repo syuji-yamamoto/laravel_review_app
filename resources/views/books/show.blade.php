@@ -19,7 +19,7 @@
           <td style="min-width: 10em;">{{ $book->user->nickname }}</td>
           <td style="min-width: 10em;">{{ $book->title }}</td>
           <td>{{ $book->contents }}</td>
-          @if (Auth::check())
+          @if ($book->user->id === auth()->id())
             <td><a class="btn btn-primary" href="{{ route('book.edit', $book->id) }}">編集</a></td>
             <td>
               <form method = "POST" href="{{ route('book.destroy', $book->id) }}" >
@@ -42,7 +42,9 @@
   </div>
   
   <div class="border p-4" style="margin-top: 10px;">
-  <div id="user-id" name="{{ $user->nickname }}"></div>
+  @if (Auth::check())
+    <div id="user-id" name="{{ $user->nickname }}"></div>
+  @endif
     @if (Auth::check())
       <form class="mb-4" method="POST" action="{{ route('comment.store') }}" id = "new_comment">
         @csrf
@@ -73,8 +75,6 @@
     @endif
 
     <h5 class="font-weight-bold">コメント一覧</h5>
-    <!-- ここにajaxで取得したコメントデータを表示 -->
-    <div id = "ajax_comment"></div>
     @forelse ($book->comment as $comment)
       <div class="border-top">
         <p>
@@ -83,9 +83,12 @@
         </p>
       </div>
     @empty
-      コメントはまだありません。
+    <div class = "comments-list">コメントはまだありません。</div>
     @endforelse
+    <!-- ここにajaxで取得したコメントデータを表示 -->
+    <div id = "ajax_comment"></div>
   </div>
+
   <a class="btn btn-primary" href="{{ url('/') }}" style="margin-top: 10px;">投稿一覧ページへ戻る</a>
 </div>
 
