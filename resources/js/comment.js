@@ -23,7 +23,6 @@ $("#new_comment").on('submit', function (e) {
   })
   //通信が成功したとき
   .done((result) => {
-    console.log(result)
     html = `
             <div class="border-top">
               <p>
@@ -32,7 +31,10 @@ $("#new_comment").on('submit', function (e) {
               </p>
             </div>
            `;
+    // let textArea = document.getElementById("#comment");
+    $(".comments-list").remove();
     $("#ajax_comment").append(html);
+    $('textarea').val("");
     })
     
   //通信が失敗したとき
