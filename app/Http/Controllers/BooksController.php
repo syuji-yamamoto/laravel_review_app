@@ -164,6 +164,10 @@ class BooksController extends Controller
     {  
         $book = Book::find($id);
         if (\Auth::user()->id === $book->user_id) {
+            // 先にbooksテーブルに紐づいているcommentsテーブルのデータを削除
+            $book->comment()->each(function($comment){
+                $comment->delete();
+            });
             $book->delete();
             return redirect('/');
         }else{
